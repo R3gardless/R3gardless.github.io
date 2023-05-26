@@ -302,21 +302,45 @@ a:hover {
   }
 }
 
-// Social (bottom)
-
-.social {
+.resume-container {
   display: flex;
-  margin-top: 3rem;
-  .social-title {
+  padding: 3rem 0 3rem 0;
+  border-top: 1px solid var(--global-divider-color);
+  .resume-head {
     font-size: 1.5rem;
     width: 30%;
   }
+  .resume-content-container {
+    .contact-icons {
+      font-size: 1rem;
+      a {
+        color: var(--global-text-color);
+        &:hover {
+          color: var(--global-theme-color);
+        }
+      }
+    }
+  }
+}
+
+// Social (bottom)
+
+.social {
+  text-align: center;
+
   .contact-icons {
-    font-size: 1rem;
+    font-size: 4rem;
+
     a {
-      color: var(--global-text-color);
+      i::before {
+        color: var(--global-text-color);
+        transition-property: all 0.2s ease-in-out;
+      }
+
       &:hover {
-        color: var(--global-theme-color);
+        i::before {
+          color: var(--global-theme-color);
+        }
       }
     }
   }

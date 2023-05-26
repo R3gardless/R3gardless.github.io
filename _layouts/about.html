@@ -58,10 +58,12 @@ layout: default
     {%- include selected_papers.html %} {%- endif %}
 
     <!-- Social -->
-    {%- if page.social %}
-    <div class="social">
-      <div class="social-title">Contact</div>
-      <div class="contact-icons">{% include social.html %}</div>
+    {%- if page.contact %}
+    <div class="resume-container pb-0">
+      <div class="resume-head">Contact</div>
+      <div class="resume-content-container">
+        <div class="contact-icons">{% include contact.html %}</div>
+      </div>
     </div>
     {%- endif %}
   </article>
