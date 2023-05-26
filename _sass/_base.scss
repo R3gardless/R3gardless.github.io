@@ -302,8 +302,11 @@ a:hover {
   }
 }
 
+// About Resume
+
 .resume-container {
   display: flex;
+  align-items: flex-start;
   padding: 3rem 0 3rem 0;
   border-top: 1px solid var(--global-divider-color);
   .resume-head {
@@ -319,6 +322,18 @@ a:hover {
           color: var(--global-theme-color);
         }
       }
+    }
+  }
+}
+
+.education {
+  em,
+  p {
+    margin-bottom: 0;
+  }
+  .education-detail {
+    strong {
+      font-size: 1.15rem;
     }
   }
 }
@@ -972,6 +987,15 @@ nav[data-toggle="toc"] {
     visibility: hidden;
     height: 0;
     top: 0;
+  }
+  .resume-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    .resume-head {
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
   }
 }
 
