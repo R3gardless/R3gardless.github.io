@@ -9,11 +9,13 @@
         class="navbar-brand title font-weight-lighter"
         href="{{ site.baseurl }}/"
       >
-        {%- if site.title == "blank" -%} {%- if site.first_name -%}
-        <span class="font-weight-bold">{{- site.first_name -}}&nbsp;</span>
-        {%- endif -%} {%- if site.middle_name -%} {{- site.middle_name -}}&nbsp;
-        {%- endif -%} {%- if site.last_name -%} {{- site.last_name -}} {%- endif
-        -%} {%- else -%} {{- site.title -}} {%- endif -%}
+        <strong>
+          {%- if site.title == "blank" -%} {%- if site.first_name -%}
+          <span class="font-weight-bold">{{- site.first_name -}}&nbsp;</span>
+          {%- endif -%} {%- if site.middle_name -%} {{- site.middle_name
+          -}}&nbsp; {%- endif -%} {%- if site.last_name -%} {{- site.last_name
+          -}} {%- endif -%} {%- else -%} {{- site.title -}} {%- endif -%}
+        </strong>
       </a>
       {%- if site.enable_navbar_social -%}
       <!-- Social Icons -->
@@ -50,7 +52,7 @@
           </li>
           <!-- Blog -->
           {% if site.blog_nav_title %}
-          <li
+          <!-- <li
             class="nav-item {% if page.url contains 'blog' %}active{% endif %}"
           >
             <a class="nav-link" href="{{ '/blog/' | relative_url }}"
@@ -58,19 +60,19 @@
               <span class="sr-only">(current)</span>
               {%- endif -%}
             </a>
-          </li>
+          </li> -->
           {%- endif %}
 
           <!-- Other pages -->
           {%- assign sorted_pages = site.pages | sort: "nav_order" -%} {%- for p
           in sorted_pages -%} {%- if p.nav and p.autogen == nil -%}
-          <li class="nav-item {% if page.title == p.title %}active{% endif %}">
+          <!-- <li class="nav-item {% if page.title == p.title %}active{% endif %}">
             <a class="nav-link" href="{{ p.url | relative_url }}"
               >{{ p.title }} {%- if page.title == p.title -%}
               <span class="sr-only">(current)</span>
               {%- endif -%}
             </a>
-          </li>
+          </li> -->
           {%- endif -%} {% endfor -%} {%- if site.enable_darkmode %}
 
           <!-- Toogle theme mode -->
