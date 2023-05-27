@@ -310,7 +310,7 @@ a:hover {
   padding: 3rem 0 3rem 0;
   border-top: 1px solid var(--global-divider-color);
   .resume-head {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     width: 30%;
   }
   .resume-content-container {
@@ -327,9 +327,15 @@ a:hover {
 }
 
 .education {
+  small {
+    display: block;
+    font-size: 0.8rem !important;
+    margin-bottom: 0 !important;
+    color: var(--global-text-color-light);
+  }
   em,
   p {
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
   }
   .education-detail {
     strong {
@@ -989,8 +995,7 @@ nav[data-toggle="toc"] {
     top: 0;
   }
   .resume-container {
-    display: flex;
-    flex-direction: column;
+    display: block;
     text-align: center;
     .resume-head {
       width: 100%;

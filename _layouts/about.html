@@ -35,9 +35,19 @@ layout: default
     <!-- Education -->
     {%- if page.education %}
     <div class="resume-container">
-      <div class="resume-head">Education</div>
+      <div class="resume-head">EDUCATION</div>
       <div class="resume-content-container">
         <div class="contact-icons">{% include education.html %}</div>
+      </div>
+    </div>
+    {%- endif %}
+
+    <!-- Languages & Skills -->
+    {%- if page.skill %}
+    <div class="resume-container">
+      <div class="resume-head">LANGUAGES & SKILLS</div>
+      <div class="resume-content-container">
+        <div class="contact-icons">{% include skill.html %}</div>
       </div>
     </div>
     {%- endif %}
@@ -60,7 +70,7 @@ layout: default
     <!-- Contact -->
     {%- if page.contact %}
     <div class="resume-container pb-0">
-      <div class="resume-head">Contact</div>
+      <div class="resume-head">CONTACT</div>
       <div class="resume-content-container">
         <div class="contact-icons">{% include contact.html %}</div>
       </div>
