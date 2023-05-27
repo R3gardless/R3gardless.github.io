@@ -3,62 +3,68 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-# Sample workflow for building and deploying a Jekyll site to GitHub Pages
+# building and deploying a Jekyll site to GitHub Pages 하는 Workflow 이름
 name: Deploy Jekyll site to Pages
 
 on:
-  # Runs on pushes targeting the default branch
+  # main 브랜치에 push 할 때 workflow 실행
   push:
     branches: ["main"]
 
-  # Allows you to run this workflow manually from the Actions tab
+  # Github Actions 탭에서 수동 실행 가능 O
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+# GITHUB_TOKEN 권한 설정하여 Github Pages 에 배포 가능
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+# 한 번에 하나의 배포만 허용
+# 진행 중인 run 사이에 대기 중인 run skip
+# 진행 중인 run 취소 X 
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
+# Workflow 에서 실행하는 Job 목록
 jobs:
-  # Build job
+  # Job 1 = Build job
   build:
+		# 해당 Job 실행 할 OS 환경 ex) ubuntu
     runs-on: ubuntu-latest
+		# Build Job 에서 실행 할 Step 목록
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
-        with:
-          ruby-version: "3.1" # Not needed with a .ruby-version file
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-          cache-version: 0 # Increment this number if you need to re-download cached gems
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v3
-      - name: Build with Jekyll
+      - name: Checkout # 해당 step name
+        uses: actions/checkout@v3 # checkout@v3 action 사용
+      - name: Setup Ruby # 해당 step name
+        uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0 setup-ruby action 사용
+        with: # 해당 action 에서 정의되는 input 파라미터 (key/value)
+          ruby-version: "3.1" # Ruby version
+          bundler-cache: true # bundler-cache 생성
+          cache-version: 0 # cached gems 여부
+      - name: Setup Pages # 해당 step name
+        id: pages # 해당 step id
+        uses: actions/configure-pages@v3 # configure-pages@v3 action 사용
+      - name: Build with Jekyll # 해당 step name
         # Outputs to the './_site' directory by default
-        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
-        env:
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}" # shell script 실행
+        env: # 해당 job 에서 사용할 환경 변수 key/value
           JEKYLL_ENV: production
-      - name: Upload artifact
+      - name: Upload artifact # 해당 step name
         # Automatically uploads an artifact from the './_site' directory by default
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v1 # upload-pages-artifact@v1 action 사용
 
-  # Deployment job
+  # Job 2 = Deployment job
   deploy:
+		# Job reference environment 정의 (name / url)
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
+    runs-on: ubuntu-latest # 해당 Job 실행 할 OS 환경 ex) ubuntu
+    needs: build # Job 의존 관계 설정 (build Job 성공적으로 완료되어야 실행)
+		# Deploy Job 에서 실행 할 Step 목록
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+      - name: Deploy to GitHub Pages # 해당 step name
+        id: deployment # 해당 step id
+        uses: actions/deploy-pages@v2 # deploy-pages@v2 action 사용
