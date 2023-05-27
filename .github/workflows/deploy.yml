@@ -31,9 +31,9 @@ concurrency:
 jobs:
   # Job 1 = Build job
   build:
-		# 해당 Job 실행 할 OS 환경 ex) ubuntu
+    # 해당 Job 실행 할 OS 환경 ex) ubuntu
     runs-on: ubuntu-latest
-		# Build Job 에서 실행 할 Step 목록
+    # Build Job 에서 실행 할 Step 목록
     steps:
       - name: Checkout # 해당 step name
         uses: actions/checkout@v3 # checkout@v3 action 사용
@@ -57,13 +57,13 @@ jobs:
 
   # Job 2 = Deployment job
   deploy:
-		# Job reference environment 정의 (name / url)
+    # Job reference environment 정의 (name / url)
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest # 해당 Job 실행 할 OS 환경 ex) ubuntu
     needs: build # Job 의존 관계 설정 (build Job 성공적으로 완료되어야 실행)
-		# Deploy Job 에서 실행 할 Step 목록
+    # Deploy Job 에서 실행 할 Step 목록
     steps:
       - name: Deploy to GitHub Pages # 해당 step name
         id: deployment # 해당 step id
