@@ -11,7 +11,7 @@ profile:
 
 education: true # includes a list of news items
 skill: true # includes a list of the newest posts
-selected_papers: false # includes a list of papers marked as "selected={true}"
+achievement: true # includes a list of papers marked as "selected={true}"
 contact: true # includes social icons at the bottom of the page
 ---
 

@@ -51,6 +51,16 @@ layout: default
       </div>
     </div>
     {%- endif %}
+
+    <!-- Achievement -->
+    {%- if page.achievement %}
+    <div class="resume-container">
+      <div class="resume-head">ACHIEVEMENTS & CERTIFICATIONS</div>
+      <div class="resume-content-container">
+        <div class="contact-icons">{% include achievement.html %}</div>
+      </div>
+    </div>
+    {%- endif %}
     <!-- News -->
     {% if page.news and site.announcements.enabled -%}
     <h2>

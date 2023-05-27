@@ -344,6 +344,18 @@ a:hover {
   }
 }
 
+.achievement {
+  .achievement-detail {
+    margin-bottom: 2rem;
+    strong {
+      font-size: 1.1rem;
+    }
+    p {
+      margin-bottom: 0;
+    }
+  }
+}
+
 // Social (bottom)
 
 .social {
