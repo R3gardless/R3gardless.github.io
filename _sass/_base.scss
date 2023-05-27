@@ -304,6 +304,12 @@ a:hover {
 
 // About Resume
 
+.clearfix {
+  a:hover {
+    color: var(--global-hover-color);
+  }
+}
+
 .resume-container {
   display: flex;
   align-items: flex-start;

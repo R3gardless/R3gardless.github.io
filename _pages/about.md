@@ -2,11 +2,11 @@
 layout: about
 title: Home
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
+subtitle:
 
 profile:
   align: left
-  image: prof_pic.jpg
+  image: https://avatars.githubusercontent.com/u/48237469?v=4
   image_circular: false # crops the image to make it circular
 
 education: true # includes a list of news items
@@ -15,8 +15,12 @@ achievement: true # includes a list of papers marked as "selected={true}"
 contact: true # includes social icons at the bottom of the page
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+👋 Hello
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+I am currently in the 6th semester at the [Department of Computer Science & Engineering](https://cse.skku.edu/eng_cse/index.do) at [SungKyunKwan Univ](https://www.skku.edu/skku/index.do).
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](http://fortawesome.github.io/Font-Awesome/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+I am deeply interested in `DevOps`, `MLops` and `Cloud computing` and think about how to improve development efficiency.
+
+I also like to put ideas to practical use through development to solve inconveniences in everyday life.
+
+Currently, I am focusing on `full-stack development` using Next.js, Nest.js and `Reinforcement Learning`, `Generative Adversarial Networks` for automated cryptocurrency trading.
