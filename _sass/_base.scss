@@ -39,7 +39,7 @@ table.table a {
   color: var(--global-theme-color);
 
   &:hover {
-    color: var(--global-theme-color);
+    color: var(--global-hover-color);
     text-decoration: underline;
   }
 
@@ -502,10 +502,27 @@ footer.sticky-bottom {
     padding-top: 2rem;
     padding-bottom: 2rem;
 
-    .post-meta {
-      color: var(--global-text-color-light);
+    .post-list-description {
       font-size: 0.875rem;
-      margin-bottom: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    .post-meta {
+      display: flex;
+      font-size: 0.875rem;
+      .post-date {
+        color: var(--global-text-color-light);
+        margin-bottom: 0;
+      }
+      .post-categories {
+        margin-bottom: 0;
+        a {
+          color: var(--global-text-color);
+        }
+        a:hover {
+          color: var(--global-theme-color);
+        }
+      }
     }
 
     .post-tags {
@@ -513,13 +530,21 @@ footer.sticky-bottom {
       font-size: 0.875rem;
       padding-top: 0.25rem;
       padding-bottom: 0;
+      margin: 0;
+      span {
+        color: var(--global-text-color-light);
+      }
     }
 
-    a {
-      color: var(--global-text-color);
+    .post-title {
       text-decoration: none;
-
-      &:hover {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      a {
+        color: var(--global-text-color);
+      }
+      a:hover {
         color: var(--global-theme-color);
       }
     }
