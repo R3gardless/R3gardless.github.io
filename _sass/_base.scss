@@ -491,7 +491,7 @@ footer.sticky-bottom {
   display: flex;
   .post-meta-container {
     width: 170px;
-    padding: 0.5rem;
+    padding: 1rem;
     flex-shrink: 0;
     .post-category-container {
       margin-bottom: 1.5rem;
@@ -499,7 +499,8 @@ footer.sticky-bottom {
         margin-bottom: 0;
         font-size:0.9rem;
         .post-number {
-          color: var(--global-text-color-light);
+          color: var(--global-theme-color);
+          font-size:0.75rem;
         }
         a {
           color: var(--global-text-color);
