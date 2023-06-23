@@ -151,6 +151,8 @@ a:hover {
       }
     }
   }
+
+  
 }
 
 .post-description {
@@ -485,6 +487,48 @@ footer.sticky-bottom {
   }
 }
 
+.post-container {
+  display: flex;
+  .post-meta-container {
+    width: 170px;
+    padding: 0.5rem;
+    flex-shrink: 0;
+    .post-category-container {
+      margin-bottom: 1.5rem;
+      p {
+        margin-bottom: 0;
+        font-size:0.9rem;
+        .post-number {
+          color: var(--global-text-color-light);
+        }
+        a {
+          color: var(--global-text-color);
+        }
+        a:hover {
+          color: var(--global-theme-color);
+        }
+      }
+      .category-subheading {
+        margin-left: 0.75rem;
+      }
+    }
+    .post-tag-container {
+      a {
+        margin-bottom: 0;
+        font-size:0.9rem;          
+        color: var(--global-text-color);
+      }
+      a:hover {
+        color: var(--global-theme-color);
+      }
+
+    }
+  }
+  .post-list-container {
+    flex-grow: 1;
+    width: calc(100% - 200px); /* Calculate the width by subtracting the fixed container width */
+  }
+}
 .post-title {
   mjx-container[jax="CHTML"][display="true"] {
     display: unset;
@@ -843,6 +887,23 @@ html.transition *:after {
 
 // Extra Markdown style (post Customization)
 .post {
+
+  .post-categories {
+    margin-bottom: 0;
+    font-size: 0.875rem;
+    .post-subheading {
+      font-size:1rem;
+      color : var(--global-text-color);
+    }
+    a {
+      color : var(--global-text-color-light);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--global-theme-color);
+      }
+    }
+  }
   .post-meta {
     color: var(--global-text-color-light);
     font-size: 0.875rem;
@@ -852,17 +913,25 @@ html.transition *:after {
   .post-tags {
     color: var(--global-text-color-light);
     font-size: 0.875rem;
-    padding-top: 0.25rem;
-    padding-bottom: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom : 1.5rem;
+    span {
+      color : var(--global-text-color-light);
+    }
+    .post-subheading {
+      font-size:1rem;
+      color : var(--global-text-color);
+    }
 
     a {
-      color: var(--global-text-color-light);
+      color : var(--global-text-color-light);
       text-decoration: none;
 
       &:hover {
         color: var(--global-theme-color);
       }
     }
+
   }
 
   .post-content {
@@ -1051,6 +1120,17 @@ nav[data-toggle="toc"] {
       margin-bottom: 1.5rem;
     }
   }
+  .post-container {
+    flex-direction: column;
+    .post-meta-container {
+      width: 100% !important;
+      border-bottom: 1px solid var(--global-divider-color);
+    }
+    .post-list-container {
+      width: 100% !important;
+    }
+  }
+  
 }
 
 /* Tips, warnings, and dangers blockquotes */
