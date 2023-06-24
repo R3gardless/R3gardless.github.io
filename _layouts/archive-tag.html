@@ -3,26 +3,153 @@ layout: default
 ---
 
 <div class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      <i class="fas fa-hashtag fa-sm"></i> {{ page.title }}
-    </h1>
-    <p class="post-description">an archive of posts with this tag</p>
-  </header>
+  {% assign blog_name_size = site.blog_name | size %} 
+  {% if blog_name_size > 0 or blog_description_size > 0 %}
+  <div class="header-bar">
+    <h1>{{ site.blog_name }}</h1>
+    <h3>{{ site.blog_description }}</h3>
+  </div>
+  {% endif %} 
 
-  <article>
-    <div class="searched-post-container">
-      {% for post in page.posts %}
-        <div class="post-container">
-          <h5 class="post-title">            
-            <a class="post-link" href="{{ post.url | relative_url }}">
-              {{ post.title }}
+  <div class="blog-container">
+    <div class="blog-meta-container">
+      <div class="blog-category-container">
+        <h5>Category</h5>
+        {% if site.display_categories %}
+          <p class="category-heading">
+            <a href="{{ '/blog/' | relative_url }}">All Post</a> 
+            <span class="post-number">
+              {{ site.posts | size }}
+            </span>
+          </p>
+          {% for category in site.display_categories %}
+          <p class="category-heading">
+            <a class="{% if category['name'] == page.title %}active{% endif %}" href="{{ category["name"] | slugify | prepend: '/blog/category/' | prepend: site.baseurl}}">
+              {{ category["name"] }}
             </a>
-          </h5>
-          <em class="post-description">{{ post.description }}</em>
-          <p class="post-date">{{ post.date | date: '%Y.%m.%d %T'  }}</p>
-        </div>
-      {% endfor %}
+            <span class="post-number">
+              {{ site.categories[category] | size }}
+            </span>
+          </p>
+            {% assign sorted_categories = category["list"] | sort %}
+            {% for key in sorted_categories %}
+              <p class="category-subheading">
+                <a class="{% if key == page.title %}active{% endif %}" href="{{ key | slugify | prepend: '/blog/category/' | prepend: site.baseurl}}">
+                  {{key}}
+                </a>
+                <span class="post-number">
+                  {{ site.categories[key] | size }}
+                </span>
+              </p>
+            {% endfor %}
+          {% endfor %}
+        {% endif %}
+      </div>
+      <div class="blog-tag-container">
+        <h5>Tag</h5>
+        {% if site.display_tags %}
+        
+          {% assign sorted_tags = site.display_tags | sort %}
+          {% for tag in sorted_tags %}
+            <a class="{% if tag == page.title %}active{% endif %}" href="{{ tag | slugify | prepend: '/blog/tag/' | prepend: site.baseurl}}">
+              {{ tag }}
+            </a>
+          {% endfor %}
+        {% endif %}
+      </div>
     </div>
-  </article>
+    <div class="post-list-container">
+      <ul class="post-list">
+        {% for post in page.posts %} 
+        {% assign tags = post.tags | join: ""%} 
+        {% assign categories = post.categories | join: "" %}
+        <li>
+          {%- if post.thumbnail -%}
+          <div class="row">
+            <div class="post-container">
+              {%- endif -%}
+    
+              <h3 class="post-title">
+                {% if post.redirect == blank %}
+                <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                {% else %} 
+                {% if post.redirect contains '://' %}
+                <a href="{{ post.redirect }}" target="_blank">{{ post.title }}</a>
+                <svg
+                  width="2rem"
+                  height="2rem"
+                  viewBox="0 0 40 40"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9"
+                    class="icon_svg-stroke"
+                    stroke="#999"
+                    stroke-width="1.5"
+                    fill="none"
+                    fill-rule="evenodd"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                  </path>
+                </svg>
+                {% else %}
+                <a href="{{ post.redirect | relative_url }}">{{ post.title }}</a>
+                {% endif %} 
+                {% endif %}
+              </h3>
+              <p class="post-list-description">{{ post.description }}</p>
+              <div class="post-meta">
+                <p class="post-date">
+                  {{ post.date | date: '%Y.%m.%d'}} 
+                </p>
+                {% if categories != "" %}
+                <p class="post-categories">
+                  &nbsp; &middot; &nbsp;
+                  {% assign sorted_categories = post.categories | sort %}
+                  {% for category in sorted_categories %}
+                  <a href="{{ category | slugify | prepend: '/blog/category/' | prepend: site.baseurl}}">
+                    <i class="fas fa-tag fa-sm"></i> {{ category }}
+                  </a>
+                  &nbsp;&nbsp;&nbsp; 
+                  {% endfor %}
+                </p>
+                {% endif %}
+              </div>
+              <p class="post-tags">
+                {% if tags != "" %}
+                  {% assign sorted_tags = post.tags | sort %}
+                  {% for tag in sorted_tags %}
+                  <a
+                    href="{{ tag | slugify | prepend: '/blog/tag/' | prepend: site.baseurl}}"
+                  >
+                    <i class="fas fa-hashtag fa-sm"></i> {{ tag }}</a
+                  >
+                  &nbsp; 
+                  {% endfor %}
+                {% else %}
+                <span>No tags</span>
+                {% endif %}
+                
+              </p>
+              {%- if post.thumbnail -%}
+            </div>
+            <div class="thumbnail-container">
+              <img
+                class="card-img"
+                src="{{post.thumbnail | relative_url}}"
+                style="object-fit: cover; height: 100%"
+                alt="image"
+              />
+            </div>
+          </div>
+          {%- endif -%}
+        </li>
+    
+        {% endfor %}
+      </ul>
+      <!-- {% include pagination.html %} -->
+    </div>
+  </div>
+
 </div>

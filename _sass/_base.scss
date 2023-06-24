@@ -3,7 +3,9 @@
  ******************************************************************************/
 
 // Typography
-
+* {
+  outline: none;
+}
 p,
 h1,
 h2,
@@ -493,6 +495,9 @@ footer.sticky-bottom {
     width: 170px;
     padding: 1rem;
     flex-shrink: 0;
+    .active {
+      font-weight: bold;
+    }
     .blog-category-container {
       margin-bottom: 1.5rem;
       p {
@@ -1212,35 +1217,5 @@ nav[data-toggle="toc"] {
     h6 {
       color: var(--global-danger-block-title);
     }
-  }
-}
-
-.searched-post-container {
-  .post-container {
-    padding: 1rem;
-    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
-    margin-bottom: 1rem;
-    h5 {
-      text-decoration: none;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      margin-bottom: 0rem;
-      a { 
-        color: var(--global-text-color);
-      }
-      a:hover {
-        color: var(--global-theme-color);
-      }
-    }
-    p {
-      margin-bottom: 0.5rem;
-      color: var(--global-text-color-light);
-      font-size:0.875rem;
-    }
-  }
-  .post-container:hover {
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
-    
   }
 }
