@@ -22,9 +22,9 @@ pagination:
     <h3>{{ site.blog_description }}</h3>
   </div>
   {% endif %} 
-  <div class="post-container">
-    <div class="post-meta-container">
-      <div class="post-category-container">
+  <div class="blog-container">
+    <div class="blog-meta-container">
+      <div class="blog-category-container">
         <h5>Category</h5>
         {% if site.display_categories %}
           <p class="category-heading">
@@ -56,15 +56,15 @@ pagination:
           {% endfor %}
         {% endif %}
       </div>
-      <div class="post-tag-container">
+      <div class="blog-tag-container">
         <h5>Tag</h5>
         {% if site.display_tags %}
-          {% for tag in site.display_tags %}
+        
+          {% assign sorted_tags = site.display_tags | sort %}
+          {% for tag in sorted_tags %}
             <a href="{{ tag | slugify | prepend: '/blog/tag/' | prepend: site.baseurl}}">
               {{ tag }}
             </a>
-          {% unless forloop.last %}
-          {% endunless %} 
           {% endfor %}
         {% endif %}
       </div>
@@ -77,7 +77,7 @@ pagination:
         <li>
           {%- if post.thumbnail -%}
           <div class="row">
-            <div class="col-sm-9">
+            <div class="post-container">
               {%- endif -%}
     
               <h3 class="post-title">
@@ -112,7 +112,7 @@ pagination:
               <p class="post-list-description">{{ post.description }}</p>
               <div class="post-meta">
                 <p class="post-date">
-                  {{ post.date | date: '%b %d, %Y' }} 
+                  {{ post.date | date: '%Y.%m.%d'}} 
                 </p>
                 {% if categories != "" %}
                 <p class="post-categories">
@@ -145,11 +145,11 @@ pagination:
               </p>
               {%- if post.thumbnail -%}
             </div>
-            <div class="col-sm-3">
+            <div class="thumbnail-container">
               <img
                 class="card-img"
                 src="{{post.thumbnail | relative_url}}"
-                style="object-fit: cover; height: 90%"
+                style="object-fit: cover; height: 100%"
                 alt="image"
               />
             </div>

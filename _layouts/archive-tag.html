@@ -11,19 +11,18 @@ layout: default
   </header>
 
   <article>
-    <div class="table-responsive">
-      <table class="table table-sm table-borderless">
-        {% for post in page.posts %}
-        <tr>
-          <th scope="row">{{ post.date | date: "%b %-d, %Y" }}</th>
-          <td>
-            <a class="post-link" href="{{ post.url | relative_url }}"
-              >{{ post.title }}</a
-            >
-          </td>
-        </tr>
-        {% endfor %}
-      </table>
+    <div class="searched-post-container">
+      {% for post in page.posts %}
+        <div class="post-container">
+          <h5 class="post-title">            
+            <a class="post-link" href="{{ post.url | relative_url }}">
+              {{ post.title }}
+            </a>
+          </h5>
+          <em class="post-description">{{ post.description }}</em>
+          <p class="post-date">{{ post.date | date: '%Y.%m.%d %T'  }}</p>
+        </div>
+      {% endfor %}
     </div>
   </article>
 </div>
