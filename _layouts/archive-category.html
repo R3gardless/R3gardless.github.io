@@ -1,5 +1,15 @@
 ---
 layout: default
+pagination:
+  enabled: true
+  collection: posts
+  permalink: /page/:num/
+  per_page: 6
+  sort_field: date
+  sort_reverse: true
+  trail:
+    before: 1 # The number of links before the current page
+    after: 3 # The number of links after the current page
 ---
 
 <div class="post">
@@ -24,7 +34,7 @@ layout: default
           </p>
           {% for category in site.display_categories %}
           <p class="category-heading">
-            <a class="{% if category['name'] == page.title %}active{% endif %}" href="{{ category["name"] | slugify | prepend: '/blog/category/' | prepend: site.baseurl}}">
+            <a class="{% if category['name'] == page.pagination.category %}active{% endif %}" href="{{ category["name"] | slugify | prepend: '/blog/category/' | prepend: site.baseurl}}">
               {{ category["name"] }}
             </a>
             <span class="post-number">
@@ -34,7 +44,7 @@ layout: default
             {% assign sorted_categories = category["list"] | sort %}
             {% for key in sorted_categories %}
               <p class="category-subheading">
-                <a class="{% if key == page.title %}active{% endif %}" href="{{ key | slugify | prepend: '/blog/category/' | prepend: site.baseurl}}">
+                <a class="{% if key == page.pagination.category %}active{% endif %}" href="{{ key | slugify | prepend: '/blog/category/' | prepend: site.baseurl}}">
                   {{key}}
                 </a>
                 <span class="post-number">
@@ -51,7 +61,7 @@ layout: default
         
           {% assign sorted_tags = site.display_tags | sort %}
           {% for tag in sorted_tags %}
-            <a class="{% if tag == page.title %}active{% endif %}" href="{{ tag | slugify | prepend: '/blog/tag/' | prepend: site.baseurl}}">
+            <a class="{% if tag == page.pagination.tag %}active{% endif %}" href="{{ tag | slugify | prepend: '/blog/tag/' | prepend: site.baseurl}}">
               {{ tag }}
             </a>
           {% endfor %}
@@ -60,7 +70,7 @@ layout: default
     </div>
     <div class="post-list-container">
       <ul class="post-list">
-        {% for post in page.posts %} 
+        {% for post in paginator.posts %} 
         {% assign tags = post.tags | join: ""%} 
         {% assign categories = post.categories | join: "" %}
         <li>
@@ -145,10 +155,9 @@ layout: default
           </div>
           {%- endif -%}
         </li>
-    
         {% endfor %}
       </ul>
-      <!-- {% include pagination.html %} -->
+      {% include pagination.html %}
     </div>
   </div>
 

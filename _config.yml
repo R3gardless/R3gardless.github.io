@@ -127,10 +127,43 @@ permalink: /blog/:year/:title/
 # Pagination
 pagination:
   enabled: true
-
+  
 related_blog_posts:
   enabled: true
   max_related: 3
+
+autopages:
+  enabled: true
+  categories: 
+    layouts: 
+      - 'archive-category.html'
+    title: 'Posts in category :cat'
+    permalink: '/blog/category/:cat'
+    silent: false
+    slugify:
+      mode: 'default'
+      case: false 
+  tags:
+    layouts: 
+      - 'archive-tag.html'
+    title: 'Posts tagged with :tag' # :tag is replaced by the tag name
+    permalink: '/blog/tag/:tag'
+    silent: false
+    slugify:
+      mode: 'default'   # :tag is slugified.
+      case: false
+  
+display_tags: ["formatting", "images", "links", "math", "code"] # these tags will be displayed on the front page of your blog
+display_categories:
+  - name: Algorithm
+    list:
+      - Baekjoon
+      - LeetCode
+      - sample-posts
+  - name: Mathematics
+    list:
+      - LeetCode
+      - Baekjoon
 
 # Giscus comments (RECOMMENDED)
 # Follow instructions on https://giscus.app/ to setup for your repo to fill out
@@ -156,8 +189,8 @@ disqus_shortname: al-folio # put your disqus shortname
 # If you have blog posts published on medium.com or other external sources,
 # you can display them in your blog by adding a link to the RSS feed.
 external_sources:
-  - name: medium.com
-    rss_url: https://medium.com/@al-folio/feed
+  # - name: medium.com
+  #   rss_url: https://medium.com/@al-folio/feed
 
 # -----------------------------------------------------------------------------
 # Collections
@@ -248,26 +281,14 @@ jekyll-minifier:
 # Jekyll Archives
 # -----------------------------------------------------------------------------
 
-jekyll-archives:
-  enabled: [tags, categories] # enables year, tag and category archives (remove if you need to disable one of them).
-  layouts:
-    tag: archive-tag
-    category: archive-category
-  permalinks:
-    tag: "/blog/tag/:name/"
-    category: "/blog/category/:name/"
-
-display_tags: ["formatting", "images", "links", "math", "code"] # these tags will be displayed on the front page of your blog
-display_categories:
-  - name: Algorithm
-    list:
-      - Baekjoon
-      - LeetCode
-      - sample-posts
-  - name: Mathematics
-    list:
-      - LeetCode
-      - Baekjoon
+# jekyll-archives:
+#   enabled: [tags, categories] # enables year, tag and category archives (remove if you need to disable one of them).
+#   layouts:
+#     tag: archive-tag
+#     category: archive-category
+#   permalinks:
+#     tag: "/blog/tag/:name/"
+#     category: "/blog/category/:name/"
 
 # -----------------------------------------------------------------------------
 # Jekyll Scholar
