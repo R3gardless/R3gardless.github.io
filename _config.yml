@@ -157,13 +157,13 @@ display_tags: ["formatting", "images", "links", "math", "code"] # these tags wil
 display_categories:
   - name: Algorithm
     list:
-      - Baekjoon
-      - LeetCode
-      - sample-posts
+      - DP
   - name: Mathematics
     list:
-      - LeetCode
-      - Baekjoon
+      - Analysis I
+  - name: Template
+    list:
+      - sample-posts 
 
 # Giscus comments (RECOMMENDED)
 # Follow instructions on https://giscus.app/ to setup for your repo to fill out

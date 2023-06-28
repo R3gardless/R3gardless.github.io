@@ -1,6 +1,5 @@
 ---
 layout: default
-title: blog
 pagination:
   enabled: true
   collection: posts
@@ -13,15 +12,17 @@ pagination:
     after: 3 # The number of links after the current page
 ---
 
+{% assign url_category = page.pagination.category | upcase %}
+
 <div class="post">
   {% assign blog_name_size = site.blog_name | size %} 
-  {% assign blog_description_size = site.blog_description | size %} 
   {% if blog_name_size > 0 or blog_description_size > 0 %}
   <div class="header-bar">
     <h1>{{ site.blog_name }}</h1>
     <h3>{{ site.blog_description }}</h3>
   </div>
   {% endif %} 
+
   <div class="blog-container">
     <div class="blog-meta-container">
       <div class="blog-category-container">
@@ -34,21 +35,22 @@ pagination:
                 {{ site.posts | size }}
               </span>
             </a> 
-
           </p>
           {% for category in site.display_categories %}
+          {% assign category_name = category['name'] | upcase %}
           <p class="category-heading">
-            <a href="{{ category["name"] | slugify | prepend: '/blog/category/' | prepend: site.baseurl}}">
-              {{ category["name"] }}
+            <a class="{% if category_name == url_category %}active{% endif %}" href="{{ category["name"] | slugify | prepend: '/blog/category/' | prepend: site.baseurl}}">
+              {{ category['name'] }}
               <span class="post-number">
-                {{ site.categories[category] | size }}
+                {{ site.categories[category['name']] | size }}
               </span>
             </a>
           </p>
             {% assign sorted_categories = category["list"] | sort %}
             {% for key in sorted_categories %}
+            {% assign category_name = key | upcase %}
               <p class="category-subheading">
-                <a href="{{ key | slugify | prepend: '/blog/category/' | prepend: site.baseurl}}">
+                <a class="{% if category_name == url_category %}active{% endif %}" href="{{ key | slugify | prepend: '/blog/category/' | prepend: site.baseurl}}">
                   {{ key }}
                   <span class="post-number">
                     {{ site.categories[key] | size }}
@@ -62,10 +64,9 @@ pagination:
       <div class="blog-tag-container">
         <h5>Tag</h5>
         {% if site.display_tags %}
-        
           {% assign sorted_tags = site.display_tags | sort %}
           {% for tag in sorted_tags %}
-            <a href="{{ tag | slugify | prepend: '/blog/tag/' | prepend: site.baseurl}}">
+            <a class="{% if tag == page.pagination.tag %}active{% endif %}" href="{{ tag | slugify | prepend: '/blog/tag/' | prepend: site.baseurl}}">
               {{ tag }}
             </a>
           {% endfor %}
@@ -159,10 +160,10 @@ pagination:
           </div>
           {%- endif -%}
         </li>
-    
         {% endfor %}
       </ul>
       {% include pagination.html %}
     </div>
   </div>
+
 </div>

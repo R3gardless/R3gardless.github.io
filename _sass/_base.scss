@@ -506,7 +506,6 @@ footer.sticky-bottom {
       margin-bottom: 1.5rem;
       p {
         margin-bottom: 0;
-        font-size:0.9rem;
         .post-number {
           color: var(--global-theme-color);
           font-size:0.8rem;
@@ -518,8 +517,12 @@ footer.sticky-bottom {
           color: var(--global-theme-color);
         }
       }
+      .category-heading {
+        font-size: 0.9rem;
+      }
       .category-subheading {
-        margin-left: 0.75rem;
+        margin-left: 0.5rem;
+        font-size:0.85rem;
       }
     }
     .blog-tag-container {
