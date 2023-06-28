@@ -40,20 +40,20 @@ pagination:
           <p class="category-heading">
             <a href="{{ category["name"] | slugify | prepend: '/blog/category/' | prepend: site.baseurl}}">
               {{ category["name"] }}
+              <span class="post-number">
+                {{ site.categories[category] | size }}
+              </span>
             </a>
-            <span class="post-number">
-              {{ site.categories[category] | size }}
-            </span>
           </p>
             {% assign sorted_categories = category["list"] | sort %}
             {% for key in sorted_categories %}
               <p class="category-subheading">
                 <a href="{{ key | slugify | prepend: '/blog/category/' | prepend: site.baseurl}}">
-                  {{key}}
+                  {{ key }}
+                  <span class="post-number">
+                    {{ site.categories[key] | size }}
+                  </span>
                 </a>
-                <span class="post-number">
-                  {{ site.categories[key] | size }}
-                </span>
               </p>
             {% endfor %}
           {% endfor %}
