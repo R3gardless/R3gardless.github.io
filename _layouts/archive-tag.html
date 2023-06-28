@@ -27,29 +27,31 @@ pagination:
         <h5>Category</h5>
         {% if site.display_categories %}
           <p class="category-heading">
-            <a href="{{ '/blog/' | relative_url }}">All Post</a> 
-            <span class="post-number">
-              {{ site.posts | size }}
-            </span>
+            <a href="{{ '/blog/' | relative_url }}">
+              All Post
+              <span class="post-number">
+                {{ site.posts | size }}
+              </span>
+            </a> 
           </p>
           {% for category in site.display_categories %}
           <p class="category-heading">
             <a class="{% if category['name'] == page.pagination.category %}active{% endif %}" href="{{ category["name"] | slugify | prepend: '/blog/category/' | prepend: site.baseurl}}">
               {{ category["name"] }}
+              <span class="post-number">
+                {{ site.categories[category] | size }}
+              </span>
             </a>
-            <span class="post-number">
-              {{ site.categories[category] | size }}
-            </span>
           </p>
             {% assign sorted_categories = category["list"] | sort %}
             {% for key in sorted_categories %}
               <p class="category-subheading">
                 <a class="{% if key == page.pagination.category %}active{% endif %}" href="{{ key | slugify | prepend: '/blog/category/' | prepend: site.baseurl}}">
-                  {{key}}
+                  {{ key }}
+                  <span class="post-number">
+                    {{ site.categories[key] | size }}
+                  </span>
                 </a>
-                <span class="post-number">
-                  {{ site.categories[key] | size }}
-                </span>
               </p>
             {% endfor %}
           {% endfor %}
